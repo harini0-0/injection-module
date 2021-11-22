@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./injectionmainpage.component.css']
 })
 export class InjectionmainpageComponent implements OnInit {
+  
 
   constructor() { }
 

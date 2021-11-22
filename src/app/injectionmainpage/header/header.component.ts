@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavLink } from '../../models/util-types';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  navLinks: NavLink[] = [
+    {displayString: 'Pending Prescription', path: 'injectionmainpage'},
+    {displayString: 'History', path: 'history'},
+  ];
 
   constructor() { }
 

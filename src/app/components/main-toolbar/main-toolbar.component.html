@@ -1,0 +1,45 @@
+<!-- <div class="navbar">
+    HCC
+    <span fxFlex></span>
+    <button mat-button *ngFor="let navLink of navLinks" [routerLink]="navLink.path">{{navLink.displayString}}</button>
+</div> -->
+<!-- <mat-toolbar color="primary">
+    HCC
+    <span fxFlex></span>
+    <button mat-button *ngFor="let navLink of navLinks" [routerLink]="navLink.path">{{navLink.displayString}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item  *ngFor="let menuLink of menuLinks" [routerLink]="menuLink.path">
+        <mat-icon color="primary">{{menuLink.icon}}</mat-icon> {{menuLink.displayString}}
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <span fxFlex></span> Logout</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>keyboard_arrow_down</mat-icon></button>
+  </mat-toolbar> -->
+
+  <mat-toolbar color="primary">
+    HCC
+    <span fxFlex></span>
+    <button mat-button *ngFor="let navLink of navLinks" [routerLink]="navLink.path">{{navLink.displayString}}</button>
+    <div *ngIf="true">
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item  *ngFor="let menuLink of menuLinks" [routerLink]="menuLink.path">
+              <mat-icon color="primary">{{menuLink.icon}}</mat-icon> {{menuLink.displayString}}
+            </button>
+            <button mat-menu-item (click)="logout()">
+              <span fxFlex></span> Logout</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>keyboard_arrow_down</mat-icon></button>
+    </div>
+  </mat-toolbar>
+
+<!--   
+  <div *ngIf="true">
+    <mat-menu #menu="matMenu">
+       <button mat-menu-item><a>Profile</a></button>
+       <button mat-menu-item><a>Settings</a></button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu">Hello</button>
+   </div> -->
+   
+
