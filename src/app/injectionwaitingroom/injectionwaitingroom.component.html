@@ -3,89 +3,89 @@
 
 <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around">
 
-    <!-- <div style="display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;" > -->
-    <!-- <right side></right> -->
+  <!-- <div style="display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;" > -->
+  <!-- <right side></right> -->
+  
+    <div fxFLex="70%" fxLayout='column' *ngIf = "CurrentPatient">
+  
+  
+      <div class="diagnosis-header" style="margin: 25px;">
+        <p class="patient-name" *ngIf="CurrentPatient.patient_name"><i>Patient Name</i> : <b >{{CurrentPatient.patient_name}} </b></p>
+        <!-- <p class="patient-name" *ngIf="currentPatient.g_id">{{currentPatient.guest?.name}} </p> -->
+        <span *ngIf="CurrentPatient.p_id" class="age"> <i>Patient type</i> : <b style="color: black;"> {{ CurrentPatient.patient_type}} </b></span>
+        <span *ngIf="CurrentPatient.g_id" class="age"> <i>Patient type</i> : <b style="color: black;"> GUEST </b> </span>
+        <p>
+        <span  style="font-size: 12px;" class="age"> <i>Doctor Name</i> : <b style="color: black;"> {{ CurrentPatient.doctor_name}}</b> <span>({{CurrentPatient.specialization}})</span> </span>
+        </p>
+  
+      </div>
+  
+  
+      <mat-card style="margin: 25px;"> 
+      <mat-table  #table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="Medicine Name" style="width: 100%;">
+          <mat-header-cell *matHeaderCellDef> Medicine Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.medicine_name}} </mat-cell>
+        </ng-container>
     
-      <div fxFLex="70%" fxLayout='column' *ngIf = "CurrentPatient">
+        <!-- Name Column -->
+        <ng-container matColumnDef="Quantity">
+          <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+        </ng-container>
     
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Dose">
+          <mat-header-cell *matHeaderCellDef> Dose </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.dose}} </mat-cell>
+        </ng-container>
     
-        <div class="diagnosis-header" style="margin: 25px;">
-          <p class="patient-name" *ngIf="CurrentPatient.patient_name"><i>Patient Name</i> : <b >{{CurrentPatient.patient_name}} </b></p>
-          <!-- <p class="patient-name" *ngIf="currentPatient.g_id">{{currentPatient.guest?.name}} </p> -->
-          <span *ngIf="CurrentPatient.p_id" class="age"> <i>Patient type</i> : <b style="color: black;"> {{ CurrentPatient.patient_type}} </b></span>
-          <span *ngIf="CurrentPatient.g_id" class="age"> <i>Patient type</i> : <b style="color: black;"> GUEST </b> </span>
-          <p>
-          <span  style="font-size: 12px;" class="age"> <i>Doctor Name</i> : <b style="color: black;"> {{ CurrentPatient.doctor_name}}</b> <span>({{CurrentPatient.specialization}})</span> </span>
-          </p>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Remarks">
+          <mat-header-cell *matHeaderCellDef> remarks </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.remarks}} </mat-cell>
+        </ng-container>
     
-        </div>
-    
-    
-        <mat-card style="margin: 25px;"> 
-        <mat-table  #table [dataSource]="dataSource">
-          <!-- Position Column -->
-          <ng-container matColumnDef="Medicine Name" style="width: 100%;">
-            <mat-header-cell *matHeaderCellDef> Medicine Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.medicine_name}} </mat-cell>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="Quantity">
-            <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
-          </ng-container>
-      
-          <!-- Weight Column -->
-          <ng-container matColumnDef="Dose">
-            <mat-header-cell *matHeaderCellDef> Dose </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.dose}} </mat-cell>
-          </ng-container>
-      
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="Remarks">
-            <mat-header-cell *matHeaderCellDef> remarks </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.remarks}} </mat-cell>
-          </ng-container>
-      
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-        <mat-card-actions style="display: flex;justify-content: space-evenly;align-items: center;">
-          <button  mat-raised-button color="primary" matDialogClose (click)= "SubmitToQueue()" >Submit</button>
-          <button  mat-raised-button color="warn" matDialogClose (click)= "RemoveFromQueue()" >Delete</button>
-        </mat-card-actions>
-      </mat-card>
-    
-    
-     
-    </div>
-    <div  fxFLex="30%" fxLayout='column' style="padding: 2rem;">
-      <!-- left Side panel -->
-      <h4 class='queue-heading'>
-        <mat-icon mat-list-icon>meeting_room</mat-icon>
-        Pharma Waiting Room : {{Pharmarequest$.length}}
-      </h4>
-      <p *ngIf="Pharmarequest$.length == 0" style="display: flex;align-items: center;justify-content: center;"> No pending prescriptions</p>
-    
-      <mat-form-field style="width:100%;">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" style="width: 90%;">
-      </mat-form-field>
-      <mat-nav-list class="queue" style="width: 100%;">
-        <div *ngFor="let pharma of Pharmarequest$;let i = index" >
-          <mat-list-item   style="width: 100%; display: flex;justify-content: space-evenly;" (click)="setPatient(pharma,i)">
-            <mat-icon mat-list-icon>person</mat-icon>
-            <span mat-line style="width: 100%;"><b>{{ pharma.patient_name }}</b></span>
-            <span mat-line  style="width: 100%;">{{ pharma.doctor_name }}</span>  
-            <span mat-line style="color:gray;width: 100%;"> <i>{{ pharma.specialization}} </i></span>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        </div>
-    
-      </mat-nav-list>
-    
-    </div>
-    
-    
-    
-    <!-- </div> -->
-    </div>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-card-actions style="display: flex;justify-content: space-evenly;align-items: center;">
+        <button  mat-raised-button color="primary" matDialogClose (click)= "SubmitToQueue()" >Submit</button>
+        <button  mat-raised-button color="warn" matDialogClose (click)= "RemoveFromQueue()" >Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  
+  
+   
+  </div>
+  <div  fxFLex="30%" fxLayout='column' style="padding: 2rem;">
+    <!-- left Side panel -->
+    <h4 class='queue-heading'>
+      <mat-icon mat-list-icon>meeting_room</mat-icon>
+      Pharma Waiting Room : {{Pharmarequest$.length}}
+    </h4>
+    <p *ngIf="Pharmarequest$.length == 0" style="display: flex;align-items: center;justify-content: center;"> No pending prescriptions</p>
+  
+    <mat-form-field style="width:100%;">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" style="width: 90%;">
+    </mat-form-field>
+    <mat-nav-list class="queue" style="width: 100%;">
+      <div *ngFor="let pharma of Pharmarequest$;let i = index" >
+        <mat-list-item   style="width: 100%; display: flex;justify-content: space-evenly;" (click)="setPatient(pharma,i)">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <span mat-line style="width: 100%;"><b>{{ pharma.patient_name }}</b></span>
+          <span mat-line  style="width: 100%;">{{ pharma.doctor_name }}</span>  
+          <span mat-line style="color:gray;width: 100%;"> <i>{{ pharma.specialization}} </i></span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+  
+    </mat-nav-list>
+  
+  </div>
+  
+  
+  
+  <!-- </div> -->
+  </div>

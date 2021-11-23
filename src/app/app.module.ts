@@ -19,6 +19,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button'; 
+import {AlertsService} from '@jaspero/ng-alerts';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { Observable } from 'rxjs';
+import {MatTableDataSource} from '@angular/material/table';
+import 'rxjs/add/observable/forkJoin';
 // import {MatListModule} from '@angular/material/list';
 
 @NgModule({
@@ -43,7 +48,11 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatListModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    AlertsService,
+    FilterPipeModule,
+    Observable,
+    MatTableDataSource
   ],
   providers: [],
   bootstrap: [AppComponent]
