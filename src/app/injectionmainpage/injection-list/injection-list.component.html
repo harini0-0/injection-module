@@ -1,1 +1,52 @@
 <p>injection-list works!</p>
+
+<h1>Stock Update</h1>
+
+<form [formGroup]="stock_update_form" (ngSubmit)="onSubmit()">
+  <div formArrayName="stock_drugs">
+    <table style='width:100%'>
+        <tr *ngFor="let stock_drug of stock_drugs.controls; let i=index" [formGroupName]="i" fxLayout fxLayoutAlign='space-around'>
+          <td>
+            <app-auto-complete [source]=drugs
+                                placeholder='Drug'
+                                display-attr='trade_name'
+                                value-attr='id'
+                                (onSelected)="onDrugSelect($event,i)"></app-auto-complete>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput formControlName="batch" placeholder="batch"/>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput formControlName="quantity" placeholder='Quantity'/>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput formControlName="expiry_date" placeholder='Expiry-Date'/>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput formControlName="rack" placeholder='Rack'/>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <button matButton mat-mini-fab color='warn' (click)="deleteRow(i)">x</button>
+          </td>
+        </tr>
+    </table>
+
+    <div fxLayout fxLayoutAlign='center end' fxLayoutGap='10px' >
+      <button mat-raised-button color='primary' type='button' (click)='addRow()'>Add Drug </button>
+      <button *ngIf="stock_update_form.status=='VALID'" mat-raised-button color='warn' type='submit'>Submit</button>
+    </div>
+
+  </div>
+
+
+
+</form>
