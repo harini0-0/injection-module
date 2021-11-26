@@ -12,5 +12,5 @@ export class InjectionmainpageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }
