@@ -1,8 +1,8 @@
 <p>injection-list works!</p>
 
 <h1>Stock Update</h1>
-
-<form [formGroup]="stock_update_form" (ngSubmit)="onSubmit()">
+<!-- 
+<form [formGroup]=`"injection_list_form" (ngSubmit)="onSubmit()">
   <div formArrayName="stock_drugs">
     <table style='width:100%'>
         <tr *ngFor="let stock_drug of stock_drugs.controls; let i=index" [formGroupName]="i" fxLayout fxLayoutAlign='space-around'>
@@ -42,11 +42,11 @@
 
     <div fxLayout fxLayoutAlign='center end' fxLayoutGap='10px' >
       <button mat-raised-button color='primary' type='button' (click)='addRow()'>Add Drug </button>
-      <button *ngIf="stock_update_form.status=='VALID'" mat-raised-button color='warn' type='submit'>Submit</button>
+      <button *ngIf="injection_list_form.status=='VALID'" mat-raised-button color='warn' type='submit'>Submit</button>
     </div>
 
   </div>
 
 
 
-</form>
+</form> -->

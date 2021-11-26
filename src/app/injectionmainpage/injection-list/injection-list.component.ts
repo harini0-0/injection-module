@@ -21,17 +21,17 @@ import { AlertsService } from '@jaspero/ng-alerts';
 import  * as moment from 'moment';
 
 @Component({
-  selector: 'app-stockupdate',
-  templateUrl: './stockupdate.component.html',
-  styleUrls: ['./stockupdate.component.css']
+  selector: 'app-injection-list',
+  templateUrl: './injection-list.component.html',
+  styleUrls: ['./injection-list.component.css']
 })
-export class StockupdateComponent implements OnInit {
+export class InjectionListComponent implements OnInit {
 
-  stock_update_form;
+  injection_list_form;
   drugs;
 
   constructor(private fb: FormBuilder, private phService: PharmaService, private _alerts: AlertsService) {
-    this.stock_update_form = this.fb.group({
+    this.injection_list_form = this.fb.group({
       'stock_drugs': this.fb.array([])
     });
   }
@@ -42,7 +42,7 @@ export class StockupdateComponent implements OnInit {
   }
 
   get stock_drugs(): FormArray {
-    return this.stock_update_form.get('stock_drugs') as FormArray;
+    return this.injection_list_form.get('stock_drugs') as FormArray;
   }
 
   onDrugSelect(item, row_id) {

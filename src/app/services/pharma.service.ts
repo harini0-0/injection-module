@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 
 
 import { replaceKeys, prepareURL } from '../utils';
-import { environment } from 'environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PharmaService {
