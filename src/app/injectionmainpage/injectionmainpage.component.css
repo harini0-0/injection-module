@@ -1,0 +1,12 @@
+.col1{
+    width: 75%;
+}
+.col2{
+    width: 25%;
+}
+div{
+    /* -ms-overflow-style: none;  IE and Edge */
+    padding-bottom: 5px;
+    height: max-content;
+  overflow: hidden;  /* Firefox */
+}

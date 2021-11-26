@@ -23,6 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
 // import {AlertsService} from '@jaspero/ng-alerts';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { Observable } from 'rxjs';
+import {MatCardModule} from '@angular/material/card'; 
 // import {MatTableDataSource} from '@angular/material/table';
 import 'rxjs/add/observable/forkJoin';
 // import {MatListModule} from '@angular/material/list';
@@ -51,6 +52,7 @@ import 'rxjs/add/observable/forkJoin';
     MatSidenavModule,
     MatButtonModule,
     MatTableModule,
+    MatCardModule,
     // AlertsService,
     FilterPipeModule,
     // Observable,

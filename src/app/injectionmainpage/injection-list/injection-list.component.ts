@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Patient, Medicine } from 'src/app/models/instances.model';
+import {InjectionmainpageComponent} from 'src/app/injectionmainpage/injectionmainpage.component'
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-injection-list',
@@ -6,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./injection-list.component.css']
 })
 export class InjectionListComponent implements OnInit {
-
+  para = new InjectionmainpageComponent();
+  
   constructor() { }
 
   ngOnInit(): void {

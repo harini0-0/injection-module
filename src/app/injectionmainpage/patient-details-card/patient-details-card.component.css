@@ -1,0 +1,14 @@
+.container{
+    margin-top: 24px; 
+    margin-bottom: 40px;
+    padding-top: 25px; 
+    background-color: #F0F0F0;
+    width: 850px;
+}
+h1{
+    color:#2cb1dd; 
+    font-weight: 500;
+}
+span{
+    font-weight: 600;
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InjectionmainpageComponent } from '../injectionmainpage/injectionmainpage.component';
+// import { InjectionmainpageComponent } from 'injectionmainpage.component'; wait a sec
 
 @Component({
   selector: 'app-injectionwaitingroom',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InjectionwaitingroomComponent implements OnInit {
 
+  para = new InjectionmainpageComponent();
   constructor() { }
 
   ngOnInit(): void {

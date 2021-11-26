@@ -5,4 +5,17 @@
   .age{
     color:gray;
   }
+ .container{
+   width: max-content;
+ } 
+input {
+  /* border: none; */
+  border: 0px;
+  color: gray;
+  /* padding-bottom: 10px; */
+  /* background-color: ; */
+  border-color: black;
+  resize: none;
+  outline-color: black;
+}
   

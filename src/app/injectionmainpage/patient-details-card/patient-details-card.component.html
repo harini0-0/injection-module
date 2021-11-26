@@ -1,1 +1,12 @@
-<p>patient-details-card works!</p>
+<div class="container">
+    <div style="padding: 3px;">
+        <h1><em>Patient Name</em> : {{this.para.patients[this.para.current].name}}</h1>
+    </div>
+    <div>
+        <h2><em style="color: grey;">Patient type</em> : <span> {{this.para.patients[this.para.current].type}}</span></h2>
+    </div>  
+    <div>
+        <h3 style="color: grey;"><em>Doctor Name</em> : <span style="color: black;"> {{this.para.patients[this.para.current].doctorName}}</span>({{this.para.patients[this.para.current].doctorType}})</h3>
+    </div>
+    <!-- <p>patient-details-card works!</p> -->
+</div>
